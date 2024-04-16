@@ -253,7 +253,7 @@ class Pool < ApplicationRecord
     added_post_ids   = post_ids - prev.post_ids
     removed_post_ids = prev.post_ids - post_ids
 
-    subject.update(
+    subject.update!(
       post_ids: post_ids,
       added_post_ids: added_post_ids,
       removed_post_ids: removed_post_ids,
@@ -280,7 +280,7 @@ class Pool < ApplicationRecord
       removed_post_ids = []
     end
 
-    versions.create(
+    versions.create!(
       updater_id: CurrentUser.id,
       post_ids: post_ids,
       added_post_ids: added_post_ids,
