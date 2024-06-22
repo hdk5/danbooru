@@ -6284,6 +6284,14 @@ ALTER TABLE ONLY public.tag_versions
 
 
 --
+-- Name: post_versions fk_rails_378f5934ac; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.post_versions
+    ADD CONSTRAINT fk_rails_378f5934ac FOREIGN KEY (parent_id) REFERENCES public.posts(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: artist_commentary_versions fk_rails_3b1402ddb3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6444,6 +6452,14 @@ ALTER TABLE ONLY public.forum_post_votes
 
 
 --
+-- Name: post_versions fk_rails_5f7c4b6bbb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.post_versions
+    ADD CONSTRAINT fk_rails_5f7c4b6bbb FOREIGN KEY (post_id) REFERENCES public.posts(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: artist_commentaries fk_rails_6110874871; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6532,6 +6548,14 @@ ALTER TABLE ONLY public.favorite_groups
 
 
 --
+-- Name: post_versions fk_rails_7a0eb97ff1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.post_versions
+    ADD CONSTRAINT fk_rails_7a0eb97ff1 FOREIGN KEY (updater_id) REFERENCES public.users(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: upgrade_codes fk_rails_80bbec9661; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6617,6 +6641,14 @@ ALTER TABLE ONLY public.bulk_update_requests
 
 ALTER TABLE ONLY public.artist_commentary_versions
     ADD CONSTRAINT fk_rails_af197b3f45 FOREIGN KEY (post_id) REFERENCES public.posts(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: pool_versions fk_rails_b14c9ef3fd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.pool_versions
+    ADD CONSTRAINT fk_rails_b14c9ef3fd FOREIGN KEY (updater_id) REFERENCES public.users(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -6740,6 +6772,14 @@ ALTER TABLE ONLY public.email_addresses
 
 
 --
+-- Name: pool_versions fk_rails_e3d7f5bb05; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.pool_versions
+    ADD CONSTRAINT fk_rails_e3d7f5bb05 FOREIGN KEY (pool_id) REFERENCES public.pools(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: note_versions fk_rails_e4a6971555; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6826,6 +6866,8 @@ ALTER TABLE ONLY public.user_upgrades
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240622072302'),
+('20240622072301'),
 ('20240607200251'),
 ('20240607200250'),
 ('20240607200249'),
