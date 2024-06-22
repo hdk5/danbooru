@@ -4836,7 +4836,7 @@ CREATE INDEX index_notes_on_post_id ON public.notes USING btree (post_id);
 -- Name: index_pool_versions_on_added_post_ids; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_pool_versions_on_added_post_ids ON public.pool_versions USING btree (added_post_ids);
+CREATE INDEX index_pool_versions_on_added_post_ids ON public.pool_versions USING gin (added_post_ids);
 
 
 --
@@ -4871,14 +4871,14 @@ CREATE INDEX index_pool_versions_on_pool_id ON public.pool_versions USING btree 
 -- Name: index_pool_versions_on_post_ids; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_pool_versions_on_post_ids ON public.pool_versions USING btree (post_ids);
+CREATE INDEX index_pool_versions_on_post_ids ON public.pool_versions USING gin (post_ids);
 
 
 --
 -- Name: index_pool_versions_on_removed_post_ids; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_pool_versions_on_removed_post_ids ON public.pool_versions USING btree (removed_post_ids);
+CREATE INDEX index_pool_versions_on_removed_post_ids ON public.pool_versions USING gin (removed_post_ids);
 
 
 --
@@ -5144,7 +5144,7 @@ CREATE INDEX index_post_replacements_on_post_id ON public.post_replacements USIN
 -- Name: index_post_versions_on_added_tags; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_post_versions_on_added_tags ON public.post_versions USING btree (added_tags);
+CREATE INDEX index_post_versions_on_added_tags ON public.post_versions USING gin (added_tags);
 
 
 --
@@ -5179,7 +5179,7 @@ CREATE INDEX index_post_versions_on_rating_changed ON public.post_versions USING
 -- Name: index_post_versions_on_removed_tags; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_post_versions_on_removed_tags ON public.post_versions USING btree (removed_tags);
+CREATE INDEX index_post_versions_on_removed_tags ON public.post_versions USING gin (removed_tags);
 
 
 --
@@ -6829,6 +6829,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20240607200251'),
 ('20240607200250'),
 ('20240607200249'),
+('20240413060557'),
 ('20240221060848'),
 ('20240217201829'),
 ('20240131055326'),
